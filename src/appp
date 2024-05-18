@@ -1,0 +1,37 @@
+import React, { useRef, useState } from 'react';
+import './App.css';
+
+function App() {
+  const dialogRef = useRef(null);
+  const [userName, setUserName] = useState("")
+  const [password, setPassword] = useState("")
+
+  const openDialog = () => {
+    dialogRef.current.showModal();
+  };
+
+  const closeDialog = () => {
+    dialogRef.current.close();
+  };
+
+  const handleSubmit= () => {
+    console.log("userName:",userName, "password:", password);
+  };
+
+  // const handleUserName = text => [
+  //   const name= 
+  // ]
+  return (
+    <div className="App">
+      <button onClick={openDialog}>Open Dialog</button>
+      <dialog ref={dialogRef}>
+        <button onClick={closeDialog}>Close</button>
+        <input placeholder='User name' onChange={event => setUserName(event.target.value)} value={userName}/>
+        <input placeholder='password' onChange={event => setPassword(event)} value={password}/>
+        <button onClick={handleSubmit}>Submit</button>
+      </dialog>
+    </div>
+  );
+}
+
+export default App;
